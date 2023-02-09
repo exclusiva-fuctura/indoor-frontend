@@ -5,7 +5,7 @@ export class AppSettings {
     return '/api';
   }
 
-  public static API_NOTICIA(): string {
-    return AppSettings.API + '/noticia'
+  static get API_NOTICIA(): string {
+    return AppSettings.API() + '/noticia'
   }
 }

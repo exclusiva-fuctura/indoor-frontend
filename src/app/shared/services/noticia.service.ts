@@ -17,22 +17,22 @@ export class NoticiaService {
   ) { }
 
   listar(): Observable<HttpResponse<INoticia[]>> {
-    return this.daoService.get<INoticia[]>(AppSettings.API_NOTICIA());
+    return this.daoService.get<INoticia[]>(AppSettings.API_NOTICIA);
   }
 
   obter(numero: number): Observable<HttpResponse<INoticia>> {
-    return this.daoService.get<INoticia>(AppSettings.API_NOTICIA() + '/' + numero);
+    return this.daoService.get<INoticia>(AppSettings.API_NOTICIA + '/' + numero);
   }
 
   salvar(noticia: INoticia): Observable<HttpResponse<INoticia>> {
-    return this.daoService.post<INoticia>(AppSettings.API_NOTICIA(), noticia);
+    return this.daoService.post<INoticia>(AppSettings.API_NOTICIA, noticia);
   }
 
   atualizar(noticia: INoticia): Observable<HttpResponse<INoticia>> {
-    return this.daoService.put<INoticia>(AppSettings.API_NOTICIA() + '/' + noticia.numero, noticia);
+    return this.daoService.put<INoticia>(AppSettings.API_NOTICIA + '/' + noticia.numero, noticia);
   }
 
   remover(numero: number): Observable<HttpResponse<INoticia>> {
-    return this.daoService.delete<INoticia>(AppSettings.API_NOTICIA() + '/' + numero);
+    return this.daoService.delete<INoticia>(AppSettings.API_NOTICIA + '/' + numero);
   }
 }

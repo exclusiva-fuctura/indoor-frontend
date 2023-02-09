@@ -16,7 +16,7 @@ export class VisualizadorService {
   ) { }
 
   listar(): Observable<HttpResponse<INoticia[]>> {
-    return this.daoService.get<INoticia[]>(AppSettings.API_NOTICIA());
+    return this.daoService.get<INoticia[]>(AppSettings.API_NOTICIA);
   }
 
 
