@@ -1,1 +1,77 @@
-<p>cadastro works!</p>
+<div>
+
+  <div class="container">
+    <h1>Notícia</h1>
+    <hr>
+    <div class="row">
+      <div class="col-md-2 col-sm-12">
+        <label for="codigo" class="form-label">Código</label>
+        <input type="text" class="form-control" id="codigo" placeholder="Gerado automáticamente" readonly>
+      </div>
+      <div class="offset-md-4 col-md-3 col-sm-12">
+        <label for="inicio" class="form-label calendar">Início da visualização</label>
+        <div class="input-group">
+          <input type="text"
+            class="form-control"
+            id="inicio"
+            placeholder="Título da Notícia"
+            bsDatepicker
+            #dpIni="bsDatepicker"
+            [bsConfig]="{ adaptivePosition: true }">
+          <button class="btn btn-outline-secondary" type="button">
+            <fa-icon [icon]="iconCalendario"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <label for="final" class="form-label calendar">Final da visualização</label>
+        <div class="input-group">
+          <input type="text"
+            class="form-control"
+            id="final"
+            placeholder="Tempo de exibição"
+            bsDatepicker
+            #dpFim="bsDatepicker"
+            [bsConfig]="{ adaptivePosition: true }">
+          <button class="btn btn-outline-secondary calendar" type="button">
+            <fa-icon [icon]="iconCalendario"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7 col-sm-12">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="titulo" placeholder="Título da Notícia">
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <label for="duracao" class="form-label">Duração</label>
+        <input type="text" class="form-control" id="duracao" placeholder="segundos">
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <label for="situacao" class="form-label">Situação Atual</label>
+        <select class="form-select" id="situacao" required>
+          <option selected disabled value="">Selecione...</option>
+          <option>...</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="descricao" class="form-label">Descrição da Notícia</label>
+        <textarea class="form-control" id="descricao" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-12 offset-md-9 buttons">
+        <button type="button" class="btn btn-primary">
+          <fa-icon [icon]="iconSalvar"></fa-icon> Salvar
+        </button>
+        <button type="button" class="btn btn-secondary">
+          <fa-icon [icon]="iconApagar"></fa-icon> Apagar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,5 +1,65 @@
 <div>
 
-  {{noticias.length > 0 ? noticias[0].titulo : 'vazio'}}
+  <div class="container">
+    <h1>Cadastro de Notícias</h1>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Título</th>
+              <th>Situação</th>
+              <th>Duração</th>
+              <th>Início</th>
+              <th>Final</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="7">Nenhuma notícia disponível</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-12 offset-md-9 buttons">
+        <button type="button" class="btn btn-primary">
+          <fa-icon [icon]="iconSalvar"></fa-icon> Salvar
+        </button>
+        <button type="button" class="btn btn-secondary">
+          <fa-icon [icon]="iconApagar"></fa-icon> Apagar
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-sm-12 offset-md-10 buttons">
+        <button type="button" class="btn btn-success">
+          <fa-icon [icon]="iconNovo"></fa-icon> Novo
+        </button>
+      </div>
+    </div>
+
+
+  </div>
 
 </div>

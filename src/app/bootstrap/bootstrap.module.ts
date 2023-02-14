@@ -18,6 +18,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     BsDropdownModule.forRoot()
   ],
   exports: [
+    BsDatepickerModule,
     BsDropdownModule,
     ButtonsModule,
   ]

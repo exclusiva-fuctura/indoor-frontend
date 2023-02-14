@@ -1,0 +1,24 @@
+.text-secondary {
+  color: #000;
+}
+
+.btn {
+  margin: 0 10px;
+}
+
+.btn-secondary {
+  border-color: #000000;
+  background-color: #fff;
+  @extend .text-secondary
+}
+
+.btn-secondary:hover {
+  border-color:  #b3b3b3;
+  background-color: #efefef;
+  @extend .text-secondary
+}
+
+label {
+  font-size: .9em;
+  margin-top: 15px;
+}

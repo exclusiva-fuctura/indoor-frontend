@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faEraser, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
 import { INoticia } from '../shared/models/noticia';
 import { NoticiaService } from '../shared/services/noticia.service';
 
@@ -10,6 +11,10 @@ import { NoticiaService } from '../shared/services/noticia.service';
 export class NoticiasComponent implements OnInit {
 
   noticias: INoticia[] = [];
+
+  iconSalvar = faSave;
+  iconApagar = faEraser;
+  iconNovo = faPlus;
 
   constructor(
     private noticiaService: NoticiaService,
