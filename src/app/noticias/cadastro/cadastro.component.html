@@ -3,6 +3,7 @@
   <div class="container">
     <h1>Notícia</h1>
     <hr>
+    <form [formGroup]="formulario" novalidate>
     <div class="row">
       <div class="col-md-2 col-sm-12">
         <label for="codigo" class="form-label">Código</label>
@@ -14,7 +15,8 @@
           <input type="text"
             class="form-control"
             id="inicio"
-            placeholder="Título da Notícia"
+            placeholder="Inicio da Visualização"
+            formControlName="dataInicio"
             bsDatepicker
             #dpIni="bsDatepicker"
             [bsConfig]="{ adaptivePosition: true }">
@@ -29,7 +31,8 @@
           <input type="text"
             class="form-control"
             id="final"
-            placeholder="Tempo de exibição"
+            placeholder="Tempo de expiração"
+            formControlName="dataFinal"
             bsDatepicker
             #dpFim="bsDatepicker"
             [bsConfig]="{ adaptivePosition: true }">
@@ -42,36 +45,40 @@
     <div class="row">
       <div class="col-md-7 col-sm-12">
         <label for="titulo" class="form-label">Título</label>
-        <input type="text" class="form-control" id="titulo" placeholder="Título da Notícia">
+        <input type="text" class="form-control" id="titulo" placeholder="Título da Notícia" formControlName="titulo">
       </div>
       <div class="col-md-2 col-sm-12">
         <label for="duracao" class="form-label">Duração</label>
-        <input type="text" class="form-control" id="duracao" placeholder="segundos">
+        <input type="text" class="form-control" id="duracao" placeholder="segundos" formControlName="duracao">
       </div>
       <div class="col-md-3 col-sm-12">
         <label for="situacao" class="form-label">Situação Atual</label>
         <select class="form-select" id="situacao" required>
           <option selected disabled value="">Selecione...</option>
-          <option>...</option>
+          <option *ngFor="let situacao of situacoes" value="situacao.id">situacao.descricao</option>
         </select>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <label for="descricao" class="form-label">Descrição da Notícia</label>
-        <textarea class="form-control" id="descricao" rows="10"></textarea>
+        <textarea class="form-control" id="descricao" rows="10" formControlName="descricao"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3 col-sm-12 offset-md-9 buttons">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" title="Salvar">
           <fa-icon [icon]="iconSalvar"></fa-icon> Salvar
         </button>
-        <button type="button" class="btn btn-secondary">
+        <button type="button" class="btn btn-secondary" title="Apagar">
           <fa-icon [icon]="iconApagar"></fa-icon> Apagar
+        </button>
+        <button type="button" class="btn btn-secondary" title="Voltar" (click)="onVoltar()">
+          <fa-icon [icon]="iconVoltar"></fa-icon>
         </button>
       </div>
     </div>
+    </form>
   </div>
 </div>
 

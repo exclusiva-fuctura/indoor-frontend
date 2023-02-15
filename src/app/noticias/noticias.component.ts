@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faEraser, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faEraser, faPencilAlt, faPlus, faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { INoticia } from '../shared/models/noticia';
 import { NoticiaService } from '../shared/services/noticia.service';
 
@@ -13,10 +14,12 @@ export class NoticiasComponent implements OnInit {
   noticias: INoticia[] = [];
 
   iconSalvar = faSave;
-  iconApagar = faEraser;
   iconNovo = faPlus;
+  iconExcluir = faTrashAlt;
+  iconEditar = faPencilAlt;
 
   constructor(
+    private router: Router,
     private noticiaService: NoticiaService,
   ) { }
 
@@ -35,6 +38,10 @@ export class NoticiasComponent implements OnInit {
         console.log(err);
       }
     });
+  }
+
+  onNovo(): void {
+    this.router.navigate(['cadastro']);
   }
 
 }

@@ -9,6 +9,9 @@ import { CadastroComponent } from './noticias/cadastro/cadastro.component';
 import { SharedModule } from './shared/shared.module';
 import { BootstrapModule } from './bootstrap/bootstrap.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SharedModule,
     BootstrapModule,
     FontAwesomeModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,17 +18,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let noticia of noticias">
+              <td>{{noticia.numero}}</td>
+              <td>{{noticia.titulo}}</td>
+              <td>{{noticia.situacao}}</td>
+              <td>{{noticia.duracaoSegundos}}</td>
+              <td>{{noticia.inicio}}</td>
+              <td>{{noticia.fim}}</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-redondo" title="Remover Notícia">
+                  <fa-icon [icon]="iconExcluir"></fa-icon>
+                </button>
+                <button type="button" class="btn btn-primary btn-redondo" title="Editar Notícia">
+                  <fa-icon [icon]="iconEditar"></fa-icon>
+                </button>
+              </td>
             </tr>
           </tbody>
-          <tfoot>
+          <tfoot *ngIf="noticias.length < 1">
             <tr>
               <td colspan="7">Nenhuma notícia disponível</td>
             </tr>
@@ -41,25 +48,11 @@
         <button type="button" class="btn btn-primary">
           <fa-icon [icon]="iconSalvar"></fa-icon> Salvar
         </button>
-        <button type="button" class="btn btn-secondary">
-          <fa-icon [icon]="iconApagar"></fa-icon> Apagar
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <hr>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-12 offset-md-10 buttons">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-success" (click)="onNovo()">
           <fa-icon [icon]="iconNovo"></fa-icon> Novo
         </button>
       </div>
     </div>
-
-
   </div>
 
 </div>
