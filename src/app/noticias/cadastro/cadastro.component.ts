@@ -34,13 +34,26 @@ export class CadastroComponent implements OnInit {
     private situacaoService: SituacaoService
   ) { }
 
+  get isModoEdit(): boolean {
+    return this.noticiaService.isModoEdicao;
+  }
+
   ngOnInit(): void {
-    this.showModalSucesso('');
     this.initForm();
+
+    // lista de situacoes
+    this.obterListaSituacao();
+
+    // verifica se a noticia esta em edição ou criação
+    if (this.noticiaService.isModoEdicao) {
+      const noticia = this.noticiaService.noticiaSelecionada;
+      this.loadForm(noticia);
+    }
   }
 
   private initForm(): void {
     this.formulario = this.formBuilder.group({
+      numero: '',
       dataInicio: '',
       dataFinal: '',
       titulo: '',
@@ -52,6 +65,7 @@ export class CadastroComponent implements OnInit {
 
   private loadForm(noticia: INoticia): void {
     this.formulario.patchValue({
+      numero: noticia.numero,
       dataInicio: noticia.inicio,
       dataFinal: noticia.fim,
       titulo: noticia.titulo,
@@ -93,7 +107,59 @@ export class CadastroComponent implements OnInit {
     });
   }
 
+  private criarNovo(noticia: INoticia): void {
+    this.noticiaService.salvar(noticia).subscribe({
+      next: () => {
+        this.formulario.reset;
+        this.showModalSucesso('Noticia Criada com sucesso!');
+      }, error: () => {
+        this.showModalError('Erro ao tentar criar a notícia');
+      }
+    });
+  }
+
+  private salvarNoticia(noticia: INoticia): void {
+    this.noticiaService.atualizar(noticia).subscribe({
+      next: () => {
+        this.router.navigate(['noticia']);
+      },
+      error: () => {
+        this.showModalError('Erro ao tentar alterar a notícia');
+      }
+    });
+  }
+
   onVoltar(): void {
+    // rotear para o path padrão
     this.router.navigate(['/']);
+  }
+
+  onLimpar(): void {
+    // reiniciar o formulario
+    this.formulario.reset();
+  }
+
+  onSalvar(): void {
+    // obter os dados do formulario
+    const dado = this.formulario.value;
+    // criar o objeto dto noticia
+    const noticia: INoticia = {
+      descricao: dado.descricao,
+      titulo: dado.titulo,
+      inicio: dado.dataInicio,
+      fim: dado.dataFinal,
+      duracaoSegundos: dado.duracao,
+      situacao: dado.situacao
+    }
+
+    // estou editando?
+    if (this.isModoEdit) {
+      // se for edicao pegar o numero
+      noticia.numero = dado.numero;
+      this.salvarNoticia(noticia);
+    } else {
+      this.criarNovo(noticia);
+    }
+
   }
 }

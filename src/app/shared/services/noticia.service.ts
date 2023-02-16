@@ -11,6 +11,7 @@ import { DaoService } from './dao.service';
 export class NoticiaService {
 
   noticiaSelecionada!: INoticia;
+  isModoEdicao = false;
 
   constructor(
     private daoService: DaoService

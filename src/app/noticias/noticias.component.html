@@ -26,10 +26,18 @@
               <td>{{noticia.inicio}}</td>
               <td>{{noticia.fim}}</td>
               <td>
-                <button type="button" class="btn btn-primary btn-redondo" title="Remover Notícia">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-redondo"
+                  (click)="onRemover(noticia)"
+                  title="Remover Notícia">
                   <fa-icon [icon]="iconExcluir"></fa-icon>
                 </button>
-                <button type="button" class="btn btn-primary btn-redondo" title="Editar Notícia">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-redondo"
+                  (click)="onEdit(noticia)"
+                  title="Editar Notícia">
                   <fa-icon [icon]="iconEditar"></fa-icon>
                 </button>
               </td>
@@ -44,10 +52,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3 col-sm-12 offset-md-9 buttons">
-        <button type="button" class="btn btn-primary">
-          <fa-icon [icon]="iconSalvar"></fa-icon> Salvar
-        </button>
+      <div class="col-md-2 col-sm-12 offset-md-10 buttons">
         <button type="button" class="btn btn-success" (click)="onNovo()">
           <fa-icon [icon]="iconNovo"></fa-icon> Novo
         </button>

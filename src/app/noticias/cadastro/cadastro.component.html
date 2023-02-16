@@ -7,7 +7,13 @@
     <div class="row">
       <div class="col-md-2 col-sm-12">
         <label for="codigo" class="form-label">Código</label>
-        <input type="text" class="form-control" id="codigo" placeholder="Gerado automáticamente" readonly>
+        <input
+          type="text"
+          class="form-control"
+          id="codigo"
+          placeholder="Gerado automáticamente"
+          formControlName="numero"
+          readonly >
       </div>
       <div class="offset-md-4 col-md-3 col-sm-12">
         <label for="inicio" class="form-label calendar">Início da visualização</label>
@@ -53,9 +59,9 @@
       </div>
       <div class="col-md-3 col-sm-12">
         <label for="situacao" class="form-label">Situação Atual</label>
-        <select class="form-select" id="situacao" required>
+        <select class="form-select" id="situacao" required formControlName="situacao">
           <option selected disabled value="">Selecione...</option>
-          <option *ngFor="let situacao of situacoes" value="situacao.id">situacao.descricao</option>
+          <option *ngFor="let situacao of situacoes" [value]="situacao.id">{{situacao.descricao}}</option>
         </select>
       </div>
     </div>
@@ -67,11 +73,20 @@
     </div>
     <div class="row">
       <div class="col-md-3 col-sm-12 offset-md-9 buttons">
-        <button type="button" class="btn btn-primary" title="Salvar">
-          <fa-icon [icon]="iconSalvar"></fa-icon> Salvar
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onSalvar()"
+          [title]="isModoEdit ? 'Salvar Alterações' : 'Criar Nova Notícia'">
+          <fa-icon [icon]="iconSalvar"></fa-icon> {{isModoEdit ? 'Salvar' : 'Novo'}}
         </button>
-        <button type="button" class="btn btn-secondary" title="Apagar">
-          <fa-icon [icon]="iconApagar"></fa-icon> Apagar
+        <button
+          type="button"
+          class="btn btn-secondary"
+          title="Limpar Campos"
+          *ngIf="!isModoEdit"
+          (click)="onLimpar()">
+          <fa-icon [icon]="iconApagar"></fa-icon> Limpar
         </button>
         <button type="button" class="btn btn-secondary" title="Voltar" (click)="onVoltar()">
           <fa-icon [icon]="iconVoltar"></fa-icon>
